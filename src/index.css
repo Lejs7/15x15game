@@ -9,8 +9,38 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
+@keyframes slide-up {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.6); }
+}
+
 .animate-bounce-in {
   animation: bounce-in 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-pulse-border {
+  animation: pulse-border 1.5s ease-in-out infinite;
+}
+
+/* Prevent zoom on iOS double-tap */
+* {
+  touch-action: manipulation;
+}
+
+/* Disable text selection on grid */
+.crossword-grid {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* Custom scrollbar for clue lists */
@@ -32,4 +62,12 @@
 }
 .dark .overflow-y-auto::-webkit-scrollbar-thumb:hover {
   background: #6366f1;
+}
+
+/* Hide native input caret and styling on mobile */
+.cell-input {
+  caret-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 16px !important; /* Prevent iOS zoom */
 }
